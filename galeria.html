@@ -128,25 +128,31 @@
         }
 
         /* Media Queries */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .timeline {
+                max-width: 100%; /* Ajustar el tamaño de la línea de tiempo */
+                padding: 20px 0;
+            }
+
             .timeline::after {
-                left: 50%; /* Ajustar la línea a la mitad */
+                left: 50%; /* Mover la línea al centro en pantallas pequeñas */
             }
 
             .container {
-                width: 100%; /* Contenedores ocupan todo el ancho */
-                left: 0; /* Centrados */
-                padding-left: 40px;
-                padding-right: 40px;
+                width: 100%; /* Aumentar el ancho de los contenedores */
+                left: 0;
+                padding-left: 20px;
+                padding-right: 20px;
+                box-sizing: border-box;
             }
 
             .container.left,
             .container.right {
-                left: 0; /* No más alineación específica de izquierda o derecha */
+                left: 0; /* Alinear al centro */
             }
 
             .container::before {
-                top: -10px; /* Ajustar el círculo del marcador */
+                top: -10px;
                 left: 50%;
                 transform: translateX(-50%);
             }
@@ -155,13 +161,33 @@
                 margin-left: 0;
                 width: 100%; /* El botón ocupa todo el ancho */
             }
+        }
 
-            h1 {
-                font-size: 1.5em; /* Ajustar el tamaño del texto */
+        @media (max-width: 480px) {
+            body {
+                background-size: cover; /* Asegura que el fondo se ajuste */
+                padding: 10px;
+            }
+
+            h2 {
+                font-size: 1.2em; /* Reducir el tamaño de los títulos */
             }
 
             p {
-                font-size: 0.9em; /* Ajustar el tamaño del texto */
+                font-size: 0.85em; /* Reducir el tamaño del texto */
+            }
+
+            .container {
+                padding: 10px; /* Reducir el padding en pantallas muy pequeñas */
+            }
+
+            .content {
+                padding: 15px; /* Menor padding en contenido */
+            }
+
+            .button {
+                padding: 10px 15px; /* Ajustar el tamaño del botón */
+                font-size: 0.9em;
             }
         }
     </style>
@@ -220,34 +246,24 @@
         <div class="container left">
             <div class="content">
                 <h2>13 DE SEPTIEMBRE</h2>
-                <p>"El 13 de septiembre, un día que quedará grabado para siempre en mi memoria, te propuse que fueras mi novia. Fue un momento lleno de emoción y nervios, y cuando aceptaste, supe que habíamos comenzado una hermosa aventura juntos."</p>
-            </div>
-        </div>
-
-        <!-- Evento 8 -->
-        <div class="container right">
-            <div class="content">
-                <h2>30 DE SEPTIEMBRE</h2>
-                <p>"El 30 de septiembre, cómo olvidar el día en que me hiciste el niño más feliz del mundo. Fuiste la primera persona en regalarme un presente en mi cumpleaños, y no solo eso, sino que lo hiciste en el primer cumpleaños que compartimos juntos."</p>
+                <p>"El 13 de septiembre, oficialmente comenzamos nuestra relación. Desde ese día, no ha pasado un solo momento en el que no me sienta afortunado de tenerte en mi vida. Cada día contigo es un nuevo capítulo en nuestra increíble historia."</p>
             </div>
         </div>
     </div>
 
     <div class="grid">
-        <a href="siguiente.html" class="button">Siguiente</a>
+        <a href="gallery.html" class="button">SIGUIENTE</a>
     </div>
 
     <script>
         function showTimeline() {
-            document.body.style.opacity = '1'; // Aparece el fondo
+            document.body.style.opacity = "1"; // Mostrar el cuerpo con una transición suave
 
-            var containers = document.querySelectorAll('.container');
-            var delay = 200; // Retraso entre cada evento en ms
-
-            containers.forEach(function(container, index) {
-                setTimeout(function() {
-                    container.classList.add('show');
-                }, delay * index);
+            const containers = document.querySelectorAll('.container');
+            containers.forEach((container, index) => {
+                setTimeout(() => {
+                    container.classList.add('show'); // Agregar clase para mostrar cada evento
+                }, index * 200); // Retraso de 200ms entre cada evento
             });
         }
     </script>
