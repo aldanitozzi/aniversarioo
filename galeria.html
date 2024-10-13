@@ -57,20 +57,7 @@
         .container.right {
             left: 25%; /* Alinear más a la derecha */
         }
- /* Media Queries */
- @media (max-width: 600px) {
-            h1 {
-                font-size: 1.5em;
-            }
 
-            .gallery {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            }
-
-            body {
-                padding: 10px;
-            }
-        }
         .container::before {
             content: ' ';
             position: absolute;
@@ -116,28 +103,66 @@
         }
 
         .button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007BFF; /* Color del botón */
-    color: white; /* Color del texto */
-    border-radius: 5px; /* Bordes redondeados */
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-    margin: 40px 0; /* Aumentar el margen superior */
-    text-align: center; /* Centra el texto */
-    text-decoration: none; /* Sin subrayado */
-}
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF; /* Color del botón */
+            color: white; /* Color del texto */
+            border-radius: 5px; /* Bordes redondeados */
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin: 40px 0; /* Aumentar el margen superior */
+            text-align: center; /* Centra el texto */
+            text-decoration: none; /* Sin subrayado */
+        }
 
-.grid {
-    margin-bottom: 40px; /* Agregar margen inferior para la cuadrícula */
-}
-
+        .grid {
+            margin-bottom: 40px; /* Agregar margen inferior para la cuadrícula */
+        }
 
         .button {
-    margin-left: 280px; /* Ajusta este valor para mover más a la izquierda */
-}
+            margin-left: 280px; /* Ajusta este valor para mover más a la izquierda */
+        }
+
         .button:hover {
             background-color: #5d97d5; /* Color al pasar el ratón */
+        }
+
+        /* Media Queries */
+        @media (max-width: 600px) {
+            .timeline::after {
+                left: 50%; /* Ajustar la línea a la mitad */
+            }
+
+            .container {
+                width: 100%; /* Contenedores ocupan todo el ancho */
+                left: 0; /* Centrados */
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+
+            .container.left,
+            .container.right {
+                left: 0; /* No más alineación específica de izquierda o derecha */
+            }
+
+            .container::before {
+                top: -10px; /* Ajustar el círculo del marcador */
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .button {
+                margin-left: 0;
+                width: 100%; /* El botón ocupa todo el ancho */
+            }
+
+            h1 {
+                font-size: 1.5em; /* Ajustar el tamaño del texto */
+            }
+
+            p {
+                font-size: 0.9em; /* Ajustar el tamaño del texto */
+            }
         }
     </style>
 </head>
@@ -155,7 +180,6 @@
         <div class="container right">
             <div class="content">
                 <h2>25 DE AGOSTO</h2>
-               
                 <p>"El 25 de agosto, finalmente nos agregamos por WhatsApp. Fue un gran paso, y desde ese día, pude ver tus logos y tus mensajes, los cuales iluminaban mis días. Cada conversación que teníamos me hacía sentir más cerca de ti."</p>
             </div>
         </div>
@@ -164,7 +188,6 @@
         <div class="container left">
             <div class="content">
                 <h2>30 DE AGOSTO</h2>
-                
                 <p>"El 30 de agosto es un día que siempre guardaré en mi corazón. Fue el día en que me llamaste, preocupada porque no habías sabido de mí debido al empadronamiento. Esa preocupación me hizo darme cuenta de lo importante que empezabas a ser para mí."</p>
             </div>
         </div>
@@ -173,7 +196,6 @@
         <div class="container right">
             <div class="content">
                 <h2>3 DE SEPTIEMBRE</h2>
-             
                 <p>"El 3 de septiembre, empezamos a hablar por llamada. Recuerdo que cada conversación era más fácil y natural, como si nos conociéramos de toda la vida. A medida que pasaban los días, mi cariño por ti crecía más y más."</p>
             </div>
         </div>
@@ -182,7 +204,6 @@
         <div class="container left">
             <div class="content">
                 <h2>8 DE SEPTIEMBRE</h2>
-            
                 <p>"El 8 de septiembre fue una fecha muy especial, ya que fue la primera vez que te dije 'te amo'. En ese momento, entendí que mis sentimientos por ti eran profundos y sinceros. Era como si el mundo se detuviera y solo existiéramos nosotros dos."</p>
             </div>
         </div>
@@ -191,7 +212,6 @@
         <div class="container right">
             <div class="content">
                 <h2>12 DE SEPTIEMBRE</h2>
-              
                 <p>"El 12 de septiembre, cómo olvidar esa llamada de siete horas. Hablamos hasta la madrugada, compartiendo risas, sueños y secretos. Esa conversación mágica se extendió hasta el 13 de septiembre, creando un lazo aún más fuerte entre nosotros."</p>
             </div>
         </div>
@@ -208,37 +228,28 @@
         <div class="container right">
             <div class="content">
                 <h2>30 DE SEPTIEMBRE</h2>
-                <p>"El 30 de septiembre, cómo olvidar el día en que me hiciste el niño más feliz del mundo. Fuiste la primera persona en regalarme un presente en mi cumpleaños, y eso dejó una huella en mi corazón que perdurará por años. Tu gesto significó todo para mí, y me hizo sentir amado y valorado de una manera que nunca olvidaré."</p>
+                <p>"El 30 de septiembre, cómo olvidar el día en que me hiciste el niño más feliz del mundo. Fuiste la primera persona en regalarme un presente en mi cumpleaños, y no solo eso, sino que lo hiciste en el primer cumpleaños que compartimos juntos."</p>
             </div>
         </div>
-
-        <!-- Evento 9 -->
-        <div class="container left">
-            <div class="content">
-                <h2>13 DE OCTUBRE</h2>
-               
-                <p>"Hoy, 13 de octubre, celebramos nuestro primer aniversario juntos. Un mes lleno de risas, aventuras y amor incondicional. Desde el momento en que comenzamos a hablar, supe que había encontrado a alguien especial. Cada día a tu lado ha sido un regalo, y no puedo imaginar mi vida sin ti. Gracias por ser mi compañera, mi apoyo y mi amor. Espero que este sea solo el comienzo de muchas más aventuras que compartiremos juntos. ¡Feliz primer aniversario, mi amor!"</p>
-            </div>
-        </div>
-
     </div>
-    <a href="siguiente.html" class="button">
-        Dale Click para  <br>  pasar al Siguiente <br> 
-    </a>
-    <script>
-        // Función para mostrar la línea de tiempo con animación
-        function showTimeline() {
-            document.body.style.opacity = '1'; // Hacer el cuerpo visible
 
-            const containers = document.querySelectorAll('.container');
-            containers.forEach((container, index) => {
-                setTimeout(() => {
-                    container.classList.add('show'); // Agregar la clase para la animación
-                }, index * 300); // Retardo incremental para cada contenedor
+    <div class="grid">
+        <a href="siguiente.html" class="button">Siguiente</a>
+    </div>
+
+    <script>
+        function showTimeline() {
+            document.body.style.opacity = '1'; // Aparece el fondo
+
+            var containers = document.querySelectorAll('.container');
+            var delay = 200; // Retraso entre cada evento en ms
+
+            containers.forEach(function(container, index) {
+                setTimeout(function() {
+                    container.classList.add('show');
+                }, delay * index);
             });
         }
     </script>
 </body>
 </html>
-
-   

@@ -41,6 +41,35 @@
             margin-top: 20px;
             text-decoration: none; /* Sin subrayado */
         }
+
+        /* Media Queries */
+        @media (max-width: 600px) {
+            body {
+                align-items: center; /* Centrar en pantallas pequeñas */
+                padding: 10px;
+            }
+
+            .message {
+                margin-right: 0; /* Elimina el margen derecho */
+                margin-top: 0; /* Elimina el margen superior */
+                width: 100%; /* El mensaje ocupa todo el ancho */
+                box-sizing: border-box;
+            }
+
+            .button {
+                width: 100%; /* El botón ocupa todo el ancho */
+                padding: 10px;
+                font-size: 0.9em; /* Ajustar el tamaño del texto del botón */
+            }
+
+            h1 {
+                font-size: 1.5em; /* Ajustar tamaño de título */
+            }
+
+            p {
+                font-size: 1em; /* Ajustar tamaño de contenido */
+            }
+        }
     </style>
 </head>
 <body>
