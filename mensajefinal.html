@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje Final</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('imagenes/fondo12.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Alinear el contenedor a la derecha */
+            justify-content: center;
+            height: 100vh; /* Ocupa toda la altura de la ventana */
+            color: white;
+        }
+
+        .message {
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden; /* Asegura que el texto no se desborde */
+            margin-right: 50px; /* Ajusta el margen derecho según sea necesario */
+            margin-top: -480px; /* Ajusta el margen superior para subir el contenedor */
+            text-align: center; /* Alinear el texto al centro dentro del contenedor */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF; /* Color del botón */
+            color: white; /* Color del texto */
+            border-radius: 5px; /* Bordes redondeados */
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            text-decoration: none; /* Sin subrayado */
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <h1 id="title"></h1>
+        <p id="content"></p>
+        <a href="https://www.youtube.com/watch?v=4DO8GsIYfhQ&ab_channel=EnriqueIglesiasVEVO" class="button">"Esta canción es para ti, cada nota refleja lo que tu me haces sentir a mi "</a>
+    </div>
+
+    <script>
+        const title = "QUERIDA MARIANELA";
+        const content = "Hoy celebramos nuestro primer mes juntos, y no puedo evitar sonreír al recordar cada momento que hemos compartido. Este breve tiempo ha sido suficiente para darme cuenta de que no se necesita mucho tiempo para enamorarse de alguien; lo que realmente importa es la conexión que tenemos. Desde nuestras primeras conversaciones, supe que había algo especial entre nosotros, una chispa que me hace sentir vivo. Tu risa, tus sueños,tu belleza , tu inteligencia  y la forma en que me entiendes son tesoros que valoro profundamente. Estoy emocionado por todo lo que nos espera en el futuro. ¡Feliz aniversario, mi amor!";
+        const titleElement = document.getElementById("title");
+        const contentElement = document.getElementById("content");
+
+        function typeWriter(element, text, delay) {
+            let index = 0;
+            const interval = setInterval(() => {
+                element.textContent += text.charAt(index);
+                index++;
+                if (index === text.length) {
+                    clearInterval(interval);
+                }
+            }, delay);
+        }
+
+        // Iniciar el efecto de escritura
+        typeWriter(titleElement, title, 100); // Escribir el título
+        setTimeout(() => {
+            typeWriter(contentElement, content, 50); // Escribir el contenido después de un breve retraso
+        }, title.length * 100 + 500); // Ajusta el tiempo según la longitud del título
+    </script>
+</body>
+</html>

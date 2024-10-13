@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Primer Aniversario</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('imagenes/fondo1.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: #333;
+            padding-left: 220px; 
+            overflow: hidden; /* Evitar scroll durante la animación */
+            opacity: 0; /* Comienza invisible */
+            transition: opacity 1s; /* Transición de opacidad */
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px; 
+            width: 70%; 
+            max-width: 600px; 
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transform: perspective(1000px) rotateY(90deg); /* Rotación inicial */
+            opacity: 0; /* Comienza invisible */
+            transition: transform 1s, opacity 1s; /* Transiciones suaves */
+        }
+
+        .container.open {
+            transform: perspective(1000px) rotateY(0deg); /* Finaliza en posición normal */
+            opacity: 1; /* Se hace visible */
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ff4b5c;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #ff4b5c;
+            color: white;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ff6f71;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="card">
+        <h1>¡Feliz Primer Aniversario, Mi Amor!</h1>
+        <p>Este es solo el comienzo de todas nuestras aventuras juntos. Gracias por cada momento compartido, por cada sonrisa y por cada instante que me haces feliz. ¡Te amo!</p>
+        <a href="galeria.html" class="button">Ver Recuerdos</a>
+    </div>
+
+    <script>
+        // Animar la carta al cargar la página
+        window.onload = function() {
+            document.body.style.opacity = 1; // Hacer visible el cuerpo
+            document.getElementById('card').classList.add('open'); // Añadir clase para animación
+        };
+    </script>
+</body>
+</html>
+

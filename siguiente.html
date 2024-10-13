@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Busca Minas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('imagenes/fondomina.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 40px); /* Tamaño de las celdas */
+            grid-gap: 5px;
+            margin-bottom: 40px; /* Agregar margen inferior para la cuadrícula */
+        }
+
+        .cell {
+            width: 40px; /* Tamaño del ancho */
+            height: 40px; /* Tamaño de la altura */
+            background-color: #007BFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .mine {
+            background-color: red; /* Color para las minas */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF; /* Color del botón */
+            color: white; /* Color del texto */
+            border-radius: 5px; /* Bordes redondeados */
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin: 40px 0; /* Aumentar el margen superior */
+            text-align: center; /* Centra el texto */
+            text-decoration: none; /* Sin subrayado */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con transparencia */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s; /* Transición para desvanecer */
+            pointer-events: none; /* No interactuable */
+            backdrop-filter: blur(5px); /* Efecto de desenfoque en el fondo */
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: auto; /* Habilita la interacción */
+        }
+    </style>
+</head>
+<body>
+    <h1>"¡Haz clic, busca las minas y descubre un mensaje lleno de amor solo para ti!"</h1>
+    <div class="grid" id="grid"></div>
+    <a href="mensajefinal.html" class="button">PAGINA FINAL</a>
+
+    <div id="overlay" class="overlay">
+        <div id="messageBox"></div>
+    </div>
+
+    <script>
+        const gridElement = document.getElementById('grid');
+        const overlay = document.getElementById('overlay');
+        const messageBox = document.getElementById('messageBox');
+        const messages = [
+            "ASÍ COMO LAS MINAS PARECEN SORPRESAS, ENCONTRARTE A TI FUE LA MEJOR DE TODAS.",
+            "CADA MINA QUE ENCUENTRAS ME RECUERDA QUE EN LA VIDA A VECES LAS SORPRESAS SON HERMOSAS, ¡COMO TÚ!",
+            "ASÍ COMO ENCONTRASTE UNA MINA, CADA DÍA DESCUBRO UNA NUEVA RAZÓN PARA AMARTE.",
+            "EN CADA MINA QUE ENCUENTRAS, RECUERDA QUE TU SONRISA ES MI MAYOR TESORO.",
+            "EN CADA MINA HAY UNA SORPRESA, Y EN CADA SORPRESA HAY UN PEDACITO DE MI AMOR POR TI.",
+            "AL IGUAL QUE ENCONTRAR UNA MINA, TÚ ERES UNA SORPRESA QUE ME TRAJO MUCHA ALEGRÍA."
+        ];
+        
+        const mineCount = 3; // Número de minas
+        const gridSize = 5; // Tamaño de la cuadrícula
+        let mines = [];
+
+        // Función para crear la cuadrícula
+        function createGrid() {
+            gridElement.innerHTML = ''; // Limpiar cuadrícula existente
+            mines = []; // Reiniciar minas
+
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.addEventListener('click', () => revealCell(cell, i));
+                gridElement.appendChild(cell);
+            }
+
+            // Colocar minas aleatoriamente
+            while (mines.length < mineCount) {
+                const mineIndex = Math.floor(Math.random() * (gridSize * gridSize));
+                if (!mines.includes(mineIndex)) {
+                    mines.push(mineIndex);
+                }
+            }
+        }
+
+        // Función para revelar celda
+        function revealCell(cell, index) {
+            if (mines.includes(index)) {
+                cell.classList.add('mine');
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                showMessage(randomMessage); // Mostrar mensaje en el overlay
+            } else {
+                cell.textContent = '✓'; // Marcamos la celda como segura
+                cell.style.backgroundColor = 'green'; // Color para celdas seguras
+                cell.style.color = 'white';
+            }
+        }
+
+        // Mostrar el mensaje en la superposición
+        function showMessage(message) {
+            messageBox.textContent = message;
+            overlay.classList.add('active'); // Activar la superposición
+
+            // Añadir un evento para cerrar el overlay al hacer clic en cualquier lugar
+            overlay.addEventListener('click', hideOverlayAndRestart);
+        }
+
+        // Función para ocultar el overlay y reiniciar el juego
+        function hideOverlayAndRestart() {
+            overlay.classList.remove('active'); // Desactivar la superposición
+            createGrid(); // Reiniciar la cuadrícula
+
+            // Eliminar el evento de clic para evitar múltiples llamadas
+            overlay.removeEventListener('click', hideOverlayAndRestart);
+        }
+
+        // Iniciar el juego al cargar la página
+        createGrid();
+    </script>
+</body>
+</html>
+
